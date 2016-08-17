@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">dbpm</string>
+    <string name="app_name">MVP-B</string>
+    <string name="plus_symbol">+</string>
 </resources>

@@ -2,16 +2,19 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+
+
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId "com.codeprogression.mvpb"
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 2
+        versionName "2.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,28 +23,25 @@ android {
     }
 
     dataBinding {
-        enabled = true
+        enabled true
     }
-
-    dependencies {
-
-        compile fileTree(include: ['*.jar'], dir: 'libs')
-        compile 'com.android.support:appcompat-v7:23.1.0'
-
-        provided 'org.glassfish:javax.annotation:10.0-b28'
-
-        compile 'com.google.dagger:dagger-compiler:2.0.1'
-        apt 'com.google.dagger:dagger:2.0.1'
-
-        compile 'io.reactivex:rxandroid:1.0.1'
-        compile 'io.reactivex:rxjava:1.0.16'
-
-        testCompile 'junit:junit:4.12'
-        testCompile "org.mockito:mockito-core:1.10.19"
-        testCompile('com.squareup.assertj:assertj-android:1.0.1') {
-            exclude group: 'com.android.support', module: 'support-annotations'
-        }
-    }
-
 }
+
+dependencies {
+
+    compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
+
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${daggerVersion}"
+
+    compile "io.reactivex:rxandroid:${rxAndroidVersion}"
+    compile "io.reactivex:rxjava:${rxJavaVersion}"
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile "com.squareup.assertj:assertj-android:${assertJVersion}"
+    testCompile "com.android.support:appcompat-v7:${supportLibraryVersion}"
+}
+
+
 

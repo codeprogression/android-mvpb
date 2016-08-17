@@ -29,8 +29,9 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:onClickListener="@{listener.add}"
-            android:text="+" />
+            android:onClick="@{listener::add}"
+            android:text="@string/plus_symbol" />
     </com.codeprogression.mvpb.MainView>
 </layout>
