@@ -6,6 +6,7 @@ buildscript {
     ext {
         gradlePluginVersion = '2.1.2'
         aptVersion = '1.8'
+        kotlinVersion = '1.0.3'
 
         compileSdkVersion = 24
         minSdkVersion = 16
@@ -16,6 +17,8 @@ buildscript {
         daggerVersion = '2.6'
         rxAndroidVersion = '1.2.0'
         rxJavaVersion = '1.1.9'
+        rxKotlinVersion = '0.60.0'
+
         assertJVersion = '1.1.1'
     }
 
@@ -24,7 +27,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:${gradlePluginVersion}"
-        classpath "com.neenbedankt.gradle.plugins:android-apt:${aptVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

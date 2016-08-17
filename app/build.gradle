@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'kotlin-android'
 
 android {
 
@@ -25,23 +25,37 @@ android {
     dataBinding {
         enabled true
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
 }
 
 dependencies {
 
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    kapt "com.android.databinding:compiler:${gradlePluginVersion}"
+
     compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
 
     compile "com.google.dagger:dagger:${daggerVersion}"
-    apt "com.google.dagger:dagger-compiler:${daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
 
     compile "io.reactivex:rxandroid:${rxAndroidVersion}"
     compile "io.reactivex:rxjava:${rxJavaVersion}"
+    compile "io.reactivex:rxkotlin:${rootProject.rxKotlinVersion}"
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
     testCompile "com.squareup.assertj:assertj-android:${assertJVersion}"
     testCompile "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
 }
 
 
-
+kapt {
+    generateStubs = true
+}
