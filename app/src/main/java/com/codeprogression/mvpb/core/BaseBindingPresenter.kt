@@ -14,14 +14,14 @@ abstract class BaseBindingPresenter<VM : Observable> {
         private set
 
     @CallSuper
-    fun attach(viewModel: VM) {
+    open fun attach(viewModel: VM) {
         hasViewModel = true
         this.viewModel = viewModel
         resume()
     }
 
     @CallSuper
-    fun detach() {
+    open fun detach() {
         hasViewModel = false
         pause()
     }
@@ -39,7 +39,7 @@ abstract class BaseBindingPresenter<VM : Observable> {
 
     protected abstract fun load()
 
-    protected fun unload() {
+    open protected fun unload() {
 
     }
 
